@@ -4,36 +4,54 @@
     ViewBag.Title = "Future Value Calculator";
 }
 
-<h1>Future Value Calculator</h1>
+<div class="container">
+    <header class="=jumbotron">
+        <img id="logo" src="~/images/Logo.jpg" alt="Logo" class="img-responsive" />
+        <h1 class="mt-3">@ViewBag.Title</h1>
+    </header>
 
-<form asp-action="Index" method="post">
-    @* Display data annotation validation messages *@
-    <div asp-validation-summary="All"></div>
+    <main>
+        @* Alert notification *@
+        <div class="alert alert-success alert-dismissible">
+            <button class="close" data-dismiss="alert">&times;</button>
+            This site is for educational purposes!
+        </div>
 
-    @*Monthly Investment*@
-    <div>
-        <label asp-for="MonthlyInvestment">Monthly Investment:</label>
-        <input asp-for="MonthlyInvestment" />
-    </div>
+        <form asp-action="Index" method="post">
+            @* Display data annotation validation messages *@
+            <div asp-validation-summary="All"></div>
 
-    @*Yearly Interest Rate*@
-    <div>
-        <label asp-for="YearlyInterestRate">Yearly Interest Rate:</label>
-        <input asp-for="YearlyInterestRate" />
-    </div>
+            @*Monthly Investment*@
+            <div class="row">
+                <label asp-for="MonthlyInvestment" class="control-label col-3">Monthly Investment:</label>
+                <input asp-for="MonthlyInvestment" class="form-control col-3" />
+            </div>
 
-    @* Years *@
-    <div>
-        <label asp-for="Years">Number of Years:</label>
-        <input asp-for="Years" />
-    </div>
+            @*Yearly Interest Rate*@
+            <div class="row">
+                <label asp-for="YearlyInterestRate" class="control-label col-3">Yearly Interest Rate:</label>
+                <input asp-for="YearlyInterestRate" class="form-control col-3" />
+            </div>
 
-    @* Future Value *@
-    <div>
-        <label>Future Value:</label>
-        <label>@ViewBag.FutureValue</label>
-    </div>
+            @* Years *@
+            <div class="row">
+                <label asp-for="Years" class="control-label col-3">Number of Years:</label>
+                <input asp-for="Years" class="form-control col-3" />
+            </div>
 
-    <button type="submit">Calculate</button>
-    <a asp-action="Index">Clear</a>
-</form>
+            @* Future Value *@
+            <div class="row">
+                <label class="control-label col-3">Future Value:</label>
+                <input value="@ViewBag.FutureValue" readonly class="form-control col-3" />
+            </div>
+
+            @* Buttons *@
+            <div class="row">
+                <div class="col offset-3 pl-0">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                    <a asp-action="Index" class="btn btn-secondary">Clear</a>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
