@@ -16,7 +16,7 @@ namespace FutureValueCalculatorTutorial.Controllers {
         [HttpPost]
         public IActionResult Index(FutureValueModel futureValue) {
             if (ModelState.IsValid) {
-                ViewBag.FutureValue = futureValue.Calculate();
+                ViewBag.FutureValue = futureValue.Calculate().ToString("c2");
             }
             else {
                 ViewBag.FutureValue = "";
